@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="rental">
+    <head>
+        <meta charset="UTF-8">
+        <title>Wypożyczalnia</title>
+        <script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+        <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.6.2/angular.min.js"></script>
+        <script src="core.js"></script>
+    </head>
+    <body ng-controller="aboutController">
+        {{ about.name }}<br>
+        <div ng-repeat="(key, hour) in about.hours">
+            {{ days[key] }} : {{ hour }}
+        </div>
+    </body>
+</html>
