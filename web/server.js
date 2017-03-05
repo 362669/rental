@@ -17,3 +17,11 @@ console.log("App listening on port 8082");
 app.get('/o-nas', function(req, res) {
     res.sendfile('./public/about.html');
 });
+
+app.get('/koszyk', function(req, res) {
+    res.sendfile('./public/cart.html');
+});
+
+app.get('/:category/filmy', function(req, res) {
+    res.sendfile('./public/category.html');
+});

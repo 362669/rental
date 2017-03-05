@@ -7,9 +7,9 @@
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
         <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.6.2/angular.min.js"></script>
-        <link rel="stylesheet" href="css/bootstrap.min.css">
-        <link rel="stylesheet" href="css/logo-nav.css">
-        <link rel="stylesheet" href="css/core.css">
+        <link rel="stylesheet" href="/css/bootstrap.min.css">
+        <link rel="stylesheet" href="/css/logo-nav.css">
+        <link rel="stylesheet" href="/css/core.css">
         <style>
             .navbar-toggler {
                 z-index: 1;
@@ -22,7 +22,7 @@
             }
         </style>
     </head>
-    <body ng-controller="mainController">
+    <body ng-controller="categoryController">
         <nav class="navbar fixed-top navbar-toggleable-md navbar-inverse bg-inverse">
             <div class="container">
                 <div class="collapse navbar-collapse" id="navbarExample">
@@ -42,23 +42,15 @@
         </nav>
 
         <div class="container">
-            <h1 class="mt-5">Strona główna</h1>
+            <h1 class="mt-5">Filmy - Kategoria</h1>
             <form class="col-lg-6" action="/add-to-cart" method="POST">
                 <div ng-repeat="(key, movie) in movies">
                     <input type="checkbox" name="{{key}}" id="movie_{{key}}">
                     <label for="movie_{{key}}">{{ movie.name }}</label>
-                    <div class="availableFormat" ng-if="movie.isAvailable == 'true'">
-                        <span class="label label-success">Dostępny</span>
-                    </div>
-                    <div class="availableFormat" ng-if="movie.isAvailable == 'true'">
-                        <span class="label label-danger">Niedostępny</span>
-                    </div>
-
                     <div>
-                        <p>Sztuk: {{movie.copiesLeft}}</p>
                         <small>Kategorie:</small>
-                        <small ng-repeat="category in movie.categoryIds">
-                            <a href="/{{category}}/filmy">{{categories[category]}} </a>
+                        <small ng-repeat="(key, category) in movie.categoryIds">
+                            <a href="{{category}}/filmy">{{categories[category]}} </a>
                         </small>
                     </div>
 
@@ -68,9 +60,9 @@
         </div>
 
 
-        <script src="core.js"></script>
-        <script src="js/jquery.js"></script>
-        <script src="js/tether.min.js"></script>
-        <script src="js/bootstrap.min.js"></script>
+        <script src="/css/core.js"></script>
+        <script src="/css/js/jquery.js"></script>
+        <script src="/css/js/tether.min.js"></script>
+        <script src="/css/js/bootstrap.min.js"></script>
     </body>
 </html>

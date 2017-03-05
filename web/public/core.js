@@ -7,9 +7,10 @@ rental.controller('mainController', ['$scope', '$http', function($scope, $http) 
             $scope.movies = movies.data;
         });
 
-    $http.get(apiServer + '/movies')
-        .then(function(movies) {
-            $scope.movies = movies.data;
+    $http.get(apiServer + '/categories')
+        .then(function(categories) {
+            $scope.categories = categories.data;
+            console.log(categories.data)
         });
 
     /*$scope.createTodo = function() {
@@ -50,4 +51,19 @@ rental.controller('aboutController', ['$scope', '$http', function($scope, $http)
                 sunday: 'Niedziela'
             }
     })
+}]);
+
+rental.controller('cartController', ['$scope', '$http', function($scope, $http) {
+}]);
+
+rental.controller('categoryController', ['$scope', '$http', function($scope, $http) {
+    $http.get(apiServer + '/movies')
+        .then(function(movies) {
+            $scope.movies = movies.data;
+        });
+
+    $http.get(apiServer + '/categories')
+        .then(function(categories) {
+            $scope.categories = categories.data;
+        });
 }]);

@@ -21,7 +21,7 @@
         }
     </style>
 </head>
-<body ng-controller="aboutController">
+<body ng-controller="cartController">
 <nav class="navbar fixed-top navbar-toggleable-md navbar-inverse bg-inverse">
     <div class="container">
         <div class="collapse navbar-collapse" id="navbarExample">
@@ -29,11 +29,11 @@
                 <li class="nav-item">
                     <a class="nav-link" href="/">Strona główna</a>
                 </li>
-                <li class="nav-item active">
-                    <a class="nav-link" href="/o-nas">O nas <span class="sr-only">(current)</span></a>
-                </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="/koszyk">Koszyk</a>
+                    <a class="nav-link" href="/o-nas">O nas</a>
+                </li>
+                <li class="nav-item active">
+                    <a class="nav-link" href="/koszyk">Koszyk <span class="sr-only">(current)</span></a>
                 </li>
             </ul>
         </div>
@@ -41,12 +41,7 @@
 </nav>
 
 <div class="container">
-    <h1 class="mt-5">O-nas</h1>
-    <div>{{ about.name }}</div><br>
-    <div>Czynne w dnaich:</div>
-    <div ng-repeat="(key, hour) in about.hours">
-        {{ days[key] }} : {{ hour }}
-    </div>
+    <h1 class="mt-5">Koszyk</h1>
 </div>
 
 

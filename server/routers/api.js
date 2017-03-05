@@ -25,6 +25,10 @@ router.get('/movies/:category', (req, res) => {
     res.json(storage.getMoviesFrom(req.params.category))
 });
 
+router.get('/categories', (req, res) => {
+    res.json(storage.getCategoriesDictionary())
+});
+
 router.post('/borrow', (req, res) => {
     if (!/\w+/.test(_.get(req, 'body.form.firstName', ''))) {
         res.status(500).send('Niepoprawne imię.');
