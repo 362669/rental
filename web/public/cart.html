@@ -42,7 +42,34 @@
 
 <div class="container">
     <h1 class="mt-5">Koszyk</h1>
+
+<form id="formContact"  class="col-md-6">
+    <div class="form-group">
+        <label for="inputName"  control-label>Imię i Nazwisko:</label>
+        <input type="text" name="subject" class="form-control" id="inputName" placeholder="Imię i Nazwisko*">
+    </div>
+
+    <div class="form-group">
+        <label for="inputEmail" control-label>E-mail:</label>
+        <input type="email" name="email" class="form-control" id="inputEmail" placeholder="Twójemail@email.com*">
+    </div>
+
+    <div class="form-group">
+        <label for="example-tel-input" class="col-2 col-form-label">Telefon</label>
+        <input class="form-control" type="tel" placeholder="+48-555-555-555" id="example-tel-input">
+  </div>
+    <div class="form-group">
+        <label for="inputMessage"  control-label>Wiadomość do nas:</label>
+        <textarea type="text" name="message" class="form-control" id="inputMessage" placeholder="Treść wiadomości*" rows="10"></textarea>
+    </div>
+    <div class="form-group">
+        <div >
+            <button  class="btn btn-success btn-md" type="submit"  value="Submit Button"><i class="fa fa-paper-plane " aria-hidden="true"></i> Wyślij </button>
+        </div>
+    </div>
+</form>
 </div>
+
 
 
 <script src="core.js"></script>
