@@ -41,7 +41,15 @@
 </nav>
 
 <div class="container">
-    <h1 class="mt-5">O-nas</h1>
+<div class="row">
+<div class="col-md-4 text-center">
+<h1 class="mt-5">O nas</h1>
+<p>Pod 7 kotami – kamera, akcja, poszła… poznańska firma zajmująca się wypożyczaniem filmamów.
+Już na początku lat 90-tych odbywaliśmy swoje pierwsze wyprawy po filmy do naszego zachodniego sąsiada.
+Zapraszamy do firmy dziłającej od lat.</p>
+</div>
+<div class="col-md-6 text-center" >
+    <h1 class="mt-5">Godziny Otwarcia:</h1>
     <div>{{ about.name }}</div><br>
     <div>Czynne w dnaich:</div>
     <div ng-repeat="(key, hour) in about.hours">
@@ -49,6 +57,21 @@
     </div>
 </div>
 
+<div class="col-lg-12 text-center" >
+<h1 class="mt-5">Odwiedź nas: </h1>
+    
+    <div class="media">
+        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2430.681655655866!2d16.92480161580547!3d52.466792579804135!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x47044325a769e6af%3A0xf728a6eee0513522!2sUmultowska+87%2C+61-001+Pozna%C5%84!5e0!3m2!1spl!2spl!4v1488833912676" height="450" frameborder="0" style="border:0" allowfullscreen class="col-lg-12">
+        </iframe>
+
+    </div>
+
+</div>
+</div>
+</div>
+<div>
+    <p> </p>
+</div>      
 
 <script src="core.js"></script>
 <script src="js/jquery.js"></script>
