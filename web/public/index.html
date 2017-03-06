@@ -42,8 +42,18 @@
         </nav>
 
         <div class="container">
+            <div class="alert alert-success" role="alert" ng-if="success == true">
+                <span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span>
+                <span class="sr-only">Sukces:</span>
+                Filmy zostały zamówione.
+            </div>
+            <div class="alert alert-danger" role="alert" ng-if="error == true">
+                <span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span>
+                <span class="sr-only">Błąd:</span>
+                Nie udało się poprawnie zamówić filmów.
+            </div>
             <h1 class="mt-5">Strona główna</h1>
-            <form class="col-lg-12" action="/add-to-cart" method="POST">
+            <form class="col-lg-12" action="/koszyk" method="GET">
                 <div ng-repeat="(key, movie) in movies">
                     <input type="checkbox" name="{{key}}" id="movie_{{key}}">
                     <label for="movie_{{key}}">{{ movie.name }}</label>
@@ -57,7 +67,7 @@
 
                     <div>
                         <small>Sztuk: {{movie.copiesLeft}}</small><br>
-                        <small>Cena: {{movie.fee}}</small><br>
+                        <small>Cena: {{movie.fee}} zł</small><br>
                         <small>Kategorie:</small>
                         <small ng-repeat="category in movie.categoryIds">
                             <a href="/kategoria/{{category}}">{{categories[category]}} </a>

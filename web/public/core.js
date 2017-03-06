@@ -10,31 +10,22 @@ rental.controller('mainController', ['$scope', '$http', function($scope, $http) 
     $http.get(apiServer + '/categories')
         .then(function(categories) {
             $scope.categories = categories.data;
-            console.log(categories.data)
         });
 
-    /*$scope.createTodo = function() {
-     $http.post('/api/todos', $scope.formData)
-     .success(function(data) {
-     $scope.formData = {}; // clear the form so our user is ready to enter another
-     $scope.todos = data;
-     console.log(data);
-     })
-     .error(function(data) {
-     console.log('Error: ' + data);
-     });
-     };*/
+    var split = window.location.href.split("/"),
+        orderStatus = split[split.length - 1];
 
-    /*$scope.deleteTodo = function(id) {
-     $http.delete('/api/todos/' + id)
-     .success(function(data) {
-     $scope.todos = data;
-     console.log(data);
-     })
-     .error(function(data) {
-     console.log('Error: ' + data);
-     });
-     };*/
+    if (orderStatus == 'success') {
+        $scope.success = true;
+    } else {
+        $scope.success = false;
+    }
+
+    if (orderStatus == 'error') {
+        $scope.error = true;
+    } else {
+        $scope.error = false;
+    }
 }]);
 
 rental.controller('aboutController', ['$scope', '$http', function($scope, $http) {
@@ -54,6 +45,71 @@ rental.controller('aboutController', ['$scope', '$http', function($scope, $http)
 }]);
 
 rental.controller('cartController', ['$scope', '$http', function($scope, $http) {
+    var moviesInCart = [];
+
+    $http.get(apiServer + '/movies')
+        .then(function(movies) {
+            location.getParams = getParams();
+
+            movies.data.forEach(function(item, key) {
+                if (typeof location.getParams[key] !== 'undefined') {
+                    moviesInCart[key] = item;
+                }
+            });
+
+            $scope.movies = moviesInCart;
+        });
+
+    $http.get(apiServer + '/categories')
+        .then(function(categories) {
+            $scope.categories = categories.data;
+        });
+
+    $scope.submit = function() {
+        var moviesInCart = [];
+
+        $('#formContact').find('input[name^="form.movies"]').each(function(e) {
+            moviesInCart.push($(this).data('id'));
+        });
+
+        $http({
+            method: 'POST',
+            url: apiServer + '/borrow',
+            data: {
+                body: {
+                    form: {
+                        firstName: $scope.firstName,
+                        lastName: $scope.lastName,
+                        email: $scope.email,
+                        phone: $scope.phone
+                    },
+                    movieIds: moviesInCart
+                }
+            }
+        }).then(function(callback) {
+           if (callback.status == '200') {
+               window.location.href = '/success'
+           } else {
+               window.location.href = '/error'
+           }
+        });
+    };
+
+    function getParams()
+    {
+        var result = {};
+        var tmp = [];
+
+        location.search
+            .substr(1)
+            .split("&")
+            .forEach(function (item) {
+                tmp = item.split("=");
+                result [tmp[0]] = decodeURIComponent (tmp[1]);
+            });
+
+        return result;
+    }
 }]);
 
 rental.controller('categoryController', ['$scope', '$http', function($scope, $http) {

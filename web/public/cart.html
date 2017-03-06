@@ -9,6 +9,7 @@
     <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.6.2/angular.min.js"></script>
     <link rel="stylesheet" href="css/bootstrap.min.css">
     <link rel="stylesheet" href="css/logo-nav.css">
+    <link rel="stylesheet" href="css/core.css">
     <style>
         .navbar-toggler {
             z-index: 1;
@@ -43,29 +44,44 @@
 <div class="container">
     <h1 class="mt-5">Koszyk</h1>
 
-<form id="formContact"  class="col-md-6">
-    <div class="form-group">
-        <label for="inputName"  control-label>Imię i Nazwisko:</label>
-        <input type="text" name="subject" class="form-control" id="inputName" placeholder="Imię i Nazwisko*">
-    </div>
-
-    <div class="form-group">
-        <label for="inputEmail" control-label>E-mail:</label>
-        <input type="email" name="email" class="form-control" id="inputEmail" placeholder="Twójemail@email.com*">
-    </div>
-
-    <div class="form-group">
-        <label for="example-tel-input" class="col-2 col-form-label">Telefon</label>
-        <input class="form-control" type="tel" placeholder="+48-555-555-555" id="example-tel-input">
-  </div>
-    <div class="form-group">
-        <label for="inputMessage"  control-label>Wiadomość do nas:</label>
-        <textarea type="text" name="message" class="form-control" id="inputMessage" placeholder="Treść wiadomości*" rows="10"></textarea>
-    </div>
-    <div class="form-group">
-        <div >
-            <button  class="btn btn-success btn-md" type="submit"  value="Submit Button"><i class="fa fa-paper-plane " aria-hidden="true"></i> Wyślij </button>
+<form id="formContact"  class="col-md-6" ng-submit="submit()">
+    <div ng-repeat="(key, movie) in movies" ng-if="movie.name">
+        <input type="hidden" name="form.movies.{{key}}" value="true" data-id="{{key}}">
+        <span>{{ movie.name }}</span>
+        <br>
+        <div>
+            <small>Sztuk: {{movie.copiesLeft}}</small><br>
+            <small>Cena: {{movie.fee}} zł</small><br>
+            <small>Kategorie:</small>
+            <small ng-repeat="category in movie.categoryIds">
+                <a href="/kategoria/{{category}}">{{categories[category]}} </a>
+            </small>
         </div>
+        <hr>
+    </div>
+    <div class="form-group">
+        <label for="firstName" class="control-label">Imię:</label>
+        <input type="text" name="firstName" class="form-control" id="firstName" placeholder="Imię*" ng-model="firstName" required>
+    </div>
+
+    <div class="form-group">
+        <label for="lastName" class="control-label">Nazwisko:</label>
+        <input type="text" name="lastName" class="form-control" id="lastName" placeholder="Nazwisko*" ng-model="lastName" required>
+    </div>
+
+    <div class="form-group">
+        <label for="inputEmail" class="control-label">E-mail:</label>
+        <input type="email" name="email" class="form-control" id="inputEmail" placeholder="Adres e-mail*" ng-model="email" required>
+    </div>
+
+    <div class="form-group">
+        <label for="phone" class="col-form-label">Telefon:</label>
+        <input class="form-control" name="phone" type="tel" placeholder="666555666" id="phone" ng-model="phone" pattern="[0-9]{9,10}" required>
+    </div>
+    <div class="form-group">
+        <button  class="btn btn-success btn-md" type="submit"  value="Submit Button"><i class="fa fa-paper-plane " aria-hidden="true">
+            </i> Zatwierdź
+        </button>
     </div>
 </form>
 </div>

@@ -30,15 +30,15 @@ router.get('/categories', (req, res) => {
 });
 
 router.post('/borrow', (req, res) => {
-    if (!/\w+/.test(_.get(req, 'body.form.firstName', ''))) {
+    if (!/\w+/.test(_.get(req, 'body.form.firstName'))) {
         res.status(500).send('Niepoprawne imię.');
         return;
     }
-    if (!/\w+/.test(_.get(req, 'body.form.lastName', ''))) {
+    if (!/\w+/.test(_.get(req, 'body.form.lastName'))) {
         res.status(500).send('Niepoprawne nazwisko.');
         return;
     }
-    if (!/\d{9,10}/.test(_.get(req, 'body.form.phone'))) {
+    if (!/\w{0,9}/.test(_.get(req, 'body.form.phone'))) {
         res.status(500).send('Niepoprawny numer telefonu.');
         return;
     }

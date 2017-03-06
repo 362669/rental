@@ -25,3 +25,11 @@ app.get('/koszyk', function(req, res) {
 app.get('/kategoria/:category', function(req, res) {
     res.sendfile('./public/category.html');
 });
+
+app.get('/success', function(req, res) {
+    res.sendfile('./public/index.html');
+});
+
+app.get('/error', function(req, res) {
+    res.sendfile('./public/index.html');
+});
