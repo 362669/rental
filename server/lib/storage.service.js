@@ -39,6 +39,7 @@ function mapMovies(movies) {
         return {
             id: movie.id,
             name: movie.name,
+            fee: movie.fee,
             categoryIds: movie.categoryIds,
             isAvailable: movie.count > borrowedCount,
             copiesLeft: movie.count - borrowedCount

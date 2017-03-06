@@ -22,6 +22,6 @@ app.get('/koszyk', function(req, res) {
     res.sendfile('./public/cart.html');
 });
 
-app.get('/:category/filmy', function(req, res) {
+app.get('/kategoria/:category', function(req, res) {
     res.sendfile('./public/category.html');
 });

@@ -43,25 +43,27 @@
 
         <div class="container">
             <h1 class="mt-5">Strona główna</h1>
-            <form class="col-lg-6" action="/add-to-cart" method="POST">
+            <form class="col-lg-12" action="/add-to-cart" method="POST">
                 <div ng-repeat="(key, movie) in movies">
                     <input type="checkbox" name="{{key}}" id="movie_{{key}}">
                     <label for="movie_{{key}}">{{ movie.name }}</label>
-                    <div class="availableFormat" ng-if="movie.isAvailable == 'true'">
+                    <br>
+                    <div class="availableFormat" ng-if="movie.isAvailable == true">
                         <span class="label label-success">Dostępny</span>
                     </div>
-                    <div class="availableFormat" ng-if="movie.isAvailable == 'true'">
+                    <div class="availableFormat" ng-if="movie.isAvailable == false">
                         <span class="label label-danger">Niedostępny</span>
                     </div>
 
                     <div>
-                        <p>Sztuk: {{movie.copiesLeft}}</p>
+                        <small>Sztuk: {{movie.copiesLeft}}</small><br>
+                        <small>Cena: {{movie.fee}}</small><br>
                         <small>Kategorie:</small>
                         <small ng-repeat="category in movie.categoryIds">
-                            <a href="/{{category}}/filmy">{{categories[category]}} </a>
+                            <a href="/kategoria/{{category}}">{{categories[category]}} </a>
                         </small>
                     </div>
-
+                    <hr>
                 </div>
                 <button type="submit" class="btn btn-success" style="float:right">Dodaj do koszyka</button>
             </form>

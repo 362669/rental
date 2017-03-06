@@ -57,7 +57,10 @@ rental.controller('cartController', ['$scope', '$http', function($scope, $http) 
 }]);
 
 rental.controller('categoryController', ['$scope', '$http', function($scope, $http) {
-    $http.get(apiServer + '/movies')
+    var split = window.location.href.split("/"),
+        category = split[split.length - 1];
+
+    $http.get(apiServer + '/movies/' + category)
         .then(function(movies) {
             $scope.movies = movies.data;
         });
